@@ -56,9 +56,7 @@ class CronJob
   end
 
   def to_s
-    to_return = ""
-    to_return = to_return + "# #{description}\n"
-    to_return = to_return + "#{minute} #{hour} #{day_of_month}  #{month} #{day_of_week} #{cmd}"
+    "# #{description}\n #{minute} #{hour} #{day_of_month}  #{month} #{day_of_week} #{cmd}"
   end
 
 end
