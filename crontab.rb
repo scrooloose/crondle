@@ -41,13 +41,13 @@ class CronJob
                 :description,
                 :cmd
 
-  def initialize(description, cmd, options)
+  def initialize(description, cmd, timing_options)
     self.description = description
     self.cmd = cmd
-    set_options(options)
+    set_timing_options(timing_options)
   end
 
-  def set_options(options)
+  def set_timing_options(options)
     self.minute = options[:minute] || "*"
     self.hour = options[:hour] || "*"
     self.day_of_month = options[:day_of_month] || "*"
