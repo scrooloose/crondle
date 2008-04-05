@@ -8,6 +8,10 @@ class CronTabBuilder
     self.jobs << CronJob.new(next_desc, cmd, options)
   end
 
+  def daily_job(cmd, hour = 0, minute = 0)
+    self.jobs << CronJob.new(next_desc, cmd, :hour => hour, :minute => 0)
+  end
+
   def self.define_jobs(&block)
     yield instance
     puts instance.jobs.join("\n\n")
