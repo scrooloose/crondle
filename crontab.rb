@@ -52,38 +52,30 @@ class CronJob
   end
 
   def set_timing_options(options)
-    self.minute = options[:minute] || "*"
-    self.hour = options[:hour] || "*"
-    self.day_of_month = options[:day_of_month] || "*"
-    self.month = options[:month] || "*"
-    self.day_of_week = options[:day_of_week] || "*"
+    self.minute = options[:minute] if options[:minute]
+    self.hour = options[:hour] if options[:hour]
+    self.day_of_month = options[:day_of_month] if options[:day_of_month]
+    self.month = options[:month] if options[:month]
+    self.day_of_week = options[:day_of_week] if options[:day_of_week]
   end
 
   def minute=(minute)
-    unless (0..59).include?(minute) || minute == "*"
-      raise(InvalidTimingParamError, "Minute must be * or fall in the range 0..59") 
-    end
+    raise(InvalidTimingParamError, "Minute must be in the range 0..59") unless (0..59).include?(minute)
     @minute = minute
   end
 
   def hour=(hour)
-    unless (0..23).include?(hour) || hour == "*"
-      raise(InvalidTimingParamError, "Hour must be * or fall in the range 0..23") 
-    end
+    raise(InvalidTimingParamError, "Hour must be in the range 0..23") unless (0..23).include?(hour)
     @hour = hour
   end
 
   def day_of_month=(day_of_month)
-    unless (0..31).include?(day_of_month) || day_of_month == "*"
-      raise(InvalidTimingParamError, "Day of month must be * or fall in the range 0..31")
-    end
+    raise(InvalidTimingParamError, "Day of month must be in the range 0..31") unless (0..31).include?(day_of_month)
     @day_of_month = day_of_month
   end
 
   def month=(month)
-    unless (1..12).include?(month) || month == "*"
-      raise(InvalidTimingParamError, "Month must be * or fall in the range 1..12") 
-    end
+    raise(InvalidTimingParamError, "Month must be in the range 1..12") unless (1..12).include?(month)
     @month = month
   end
 
@@ -96,14 +88,13 @@ class CronJob
                    when :thursday:  4
                    when :friday:    5
                    when :saturday:  6
-                   when "*":        "*"
                    else
-                     raise(InvalidTimingParamError, "Day of week must be * or one of :monday, :tuesday, etc")
+                     raise(InvalidTimingParamError, "Day of week must be one of :monday, :tuesday, etc")
                    end
   end
 
   def to_s
-    "# #{description}\n #{minute} #{hour} #{day_of_month} #{month} #{day_of_week} #{cmd}"
+    "# #{description}\n #{minute || "*"} #{hour || "*"} #{day_of_month || "*"} #{month || "*"} #{day_of_week || "*"} #{cmd}"
   end
 
 end
