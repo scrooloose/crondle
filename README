@@ -33,18 +33,18 @@ Below is an example ruby file that uses crondle.
 Running ruby on this file would produce the following crontab code
 
 
-# Restart god every midnight
-0 0 * * * /home/admin/bin/god-restart
+    # Restart god every midnight
+    0 0 * * * /home/admin/bin/god-restart
 
-# Do an ls at 00:30 on the 5th day of every month
-30 0 5 * * ls
+    # Do an ls at 00:30 on the 5th day of every month
+    30 0 5 * * ls
 
-# Do a foobar every tuesday at midnight
-0 0 * * 2 foobar
+    # Do a foobar every tuesday at midnight
+    0 0 * * 2 foobar
 
-# Run rodney at midnight nightly
-0 0 * * * rodney
+    # Run rodney at midnight nightly
+    0 0 * * * rodney
 
-# Run boner at 3am nightly
-0 3 * * * boner
+    # Run boner at 3am nightly
+    0 3 * * * boner
 
