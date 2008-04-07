@@ -23,7 +23,7 @@ module Cron
       self.hour = options[:hour] if options[:hour]
       self.day_of_month = options[:day_of_month] if options[:day_of_month]
       self.month = options[:month] if options[:month]
-      self.day_of_week = options[:day_of_week] if options[:day_of_week]
+      self.day_of_week = options[:day_of_week].to_sym if options[:day_of_week]
     end
 
     def minute=(minute)

@@ -52,5 +52,10 @@ module Cron
       Job.new("desc", "ls", {}).to_s.count("*").should equal(5)
     end
 
+    it "should work if day_of_week is a symbol OR a string" do
+      lambda {Job.new("desc", "ls", :day_of_week => :monday)}.should_not raise_error(Job::InvalidTimingParamError)
+      lambda {Job.new("desc", "ls", :day_of_week => 'monday')}.should_not raise_error(Job::InvalidTimingParamError)
+    end
+
   end
 end
