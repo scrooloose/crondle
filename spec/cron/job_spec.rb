@@ -57,5 +57,20 @@ module Cron
       lambda {Job.new("desc", "ls", :day_of_week => 'monday')}.should_not raise_error(Job::InvalidTimingParamError)
     end
 
+    it "should output the description as a comment on the first line and the crontab command on the following line" do
+      j = Job.new("desc", "ls", :hour => 10, :minute => 22)
+      j.to_s.should match(/^# desc\n.*$/)
+    end
+
+    it "should output the timing params in the right order" do
+      j = Job.new("desc", "ls", :minute => 1, :hour => 2, :day_of_month => 3, :month => 4, :day_of_week => :friday)
+      j.to_s.should match(/^.*\n1 2 3 4 5.*$/)
+    end
+
+    it "should output the command on the end of the second line" do
+      j = Job.new("desc", "ls", :minute => 1, :hour => 2, :day_of_month => 3, :month => 4, :day_of_week => :friday)
+      j.to_s.should match(/^.*\n.*ls$/)
+    end
+
   end
 end
