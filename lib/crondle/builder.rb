@@ -5,7 +5,7 @@ module Crondle
       @next_desc = desc 
     end
 
-    def job(cmd, options)
+    def job(cmd, options = {})
       jobs << Job.new(next_desc, cmd, options)
     end
 

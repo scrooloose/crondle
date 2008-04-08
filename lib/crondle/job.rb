@@ -12,7 +12,7 @@ module Crondle
     attr_accessor :description,
       :cmd
 
-    def initialize(description, cmd, timing_options)
+    def initialize(description, cmd, timing_options = {})
       self.description = description
       self.cmd = cmd
       set_timing_options(timing_options)
