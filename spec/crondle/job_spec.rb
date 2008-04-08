@@ -75,6 +75,5 @@ module Crondle
       j = Job.new("desc", "ls", :minute => 1, :hour => 2, :day_of_month => 3, :month => 4, :day_of_week => :friday)
       j.to_s.should match(/^.*\n.*ls$/)
     end
-
   end
 end

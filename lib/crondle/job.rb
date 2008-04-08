@@ -2,7 +2,6 @@ module Crondle
   class Job
     class InvalidTimingParamError < StandardError; end
 
-
     attr_reader :minute,
       :hour,
       :day_of_month,
@@ -61,7 +60,7 @@ module Crondle
     end
 
     def to_s
-    "# #{description}\n#{minute || "*"} #{hour || "*"} #{day_of_month || "*"} #{month || "*"} #{day_of_week || "*"} #{cmd}"
+      "# #{description}\n#{minute || "*"} #{hour || "*"} #{day_of_month || "*"} #{month || "*"} #{day_of_week || "*"} #{cmd}"
     end
   end
 end

@@ -1,6 +1,5 @@
 module Crondle
   class Builder
-
     def desc(desc)
       @next_desc = desc 
     end
