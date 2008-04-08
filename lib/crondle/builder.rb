@@ -10,7 +10,7 @@ module Cron
     end
 
     def daily_job(cmd, hour = 0, minute = 0)
-      job(next_desc, cmd, :hour => hour, :minute => 0)
+      job(cmd, :hour => hour, :minute => 0)
     end
 
     def self.define_jobs(&block)
