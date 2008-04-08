@@ -3,7 +3,8 @@ make it into a gem at some stage.
 
 Below is an example ruby file that uses crondle.
 
-    require 'requires'
+
+    require 'lib/crondle'
 
     Cron::Builder.define_jobs do |builder|
 
@@ -27,7 +28,6 @@ Below is an example ruby file that uses crondle.
       builder.desc "Run boner at 3am nightly"
       builder.daily_job "boner", 3
     end
-
 
 
 Running ruby on this file would produce the following crontab code
