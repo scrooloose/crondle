@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-module Cron
+module Crondle
   describe Job do
     it "shouldnt allow 'minute' to be < 0" do
       lambda {Job.new("desc", "ls", :minute => -1)}.should raise_error(Job::InvalidTimingParamError)

@@ -1,4 +1,4 @@
-module Cron
+module Crondle
   class Builder
 
     def desc(desc)

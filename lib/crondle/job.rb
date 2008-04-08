@@ -1,4 +1,4 @@
-module Cron
+module Crondle
   class Job
     class InvalidTimingParamError < StandardError; end
 

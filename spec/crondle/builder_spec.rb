@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper.rb'
 
-module Cron
+module Crondle
   describe Builder do
     it "should do stuff" do
       1.should equal(1)
