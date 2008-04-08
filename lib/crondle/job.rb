@@ -47,7 +47,7 @@ module Crondle
     end
 
     def day_of_week=(day_of_week)
-      @day_of_week = case day_of_week
+      @day_of_week = case day_of_week.to_sym
                      when :sunday:    0
                      when :monday:    1
                      when :tuesday:   2
