@@ -13,23 +13,11 @@ module Crondle
       job(cmd, :hour => hour, :minute => 0)
     end
 
-    def self.define_jobs(&block)
-      yield instance
-      puts instance.jobs.join("\n\n")
-    end
-
-    def self.instance
-      @instance ||= new
-    end
-
     def jobs
       @jobs ||= []
     end
 
     private
-    def initialize
-    end
-
     def next_desc
       @next_desc || ""
     end

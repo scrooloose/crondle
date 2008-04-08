@@ -6,7 +6,7 @@ Below is an example ruby file that uses crondle.
 
     require 'lib/crondle'
 
-    Crondle::Builder.define_jobs do |builder|
+    Crondle.define_jobs do |builder|
 
       builder.desc "Restart god every midnight"
       builder.job "/home/admin/bin/god-restart", :minute => 0,
