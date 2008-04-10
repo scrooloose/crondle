@@ -5,7 +5,7 @@ module Crondle
     end
 
     def job(cmd, options = {})
-      j = Job.new(next_desc, cmd, options)
+      j = Job.new(next_desc, cmd, carry_over_options.merge(options))
       jobs << j
       j
     end
@@ -18,9 +18,20 @@ module Crondle
       @jobs ||= []
     end
 
+    def with_options(options, &block)
+      @carry_over_options = options
+      yield self
+      @carry_over_options.clear
+    end
+
     private
     def next_desc
       @next_desc || ""
     end
+
+    def carry_over_options
+      @carry_over_options || {}
+    end
+
   end
 end

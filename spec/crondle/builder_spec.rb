@@ -60,5 +60,22 @@ module Crondle
       j.hour.should equal(0)
       j.minute.should equal(0)
     end
+
+    it "should apply the #with_options options to the Jobs defined in the #with_options block" do
+      b = Builder.new
+      b.with_options :month => 3 do
+        b.job("ls")
+      end
+      b.jobs.first.month.should eql(3)
+    end
+
+    it "should reset the carry over options once the #with_options block has ended" do
+      b = Builder.new
+      b.with_options :month => 3 do
+      end
+      b.job("ls")
+      b.jobs.first.month.should_not be
+    end
+
   end
 end
