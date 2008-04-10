@@ -3,7 +3,6 @@ make it into a gem at some stage.
 
 Below is an example ruby file that uses crondle.
 
-
     require 'lib/crondle'
 
     Crondle.define_jobs do |builder|
@@ -21,6 +20,14 @@ Below is an example ruby file that uses crondle.
       builder.job "foobar", :day_of_week => :tuesday,
                         :hour => 0,
                         :minute => 0
+
+      builder.with_options :minute => 30, :hour => 3, :day_of_week => :sunday do
+        builder.desc "Run argle at 0330 on sundays"
+        builder.job("argle")
+
+        builder.desc "Run glarg at 0330 on sundays in july"
+        builder.job("glarg", :month => 7)
+      end
 
       builder.desc "Run rodney at midnight nightly"
       builder.daily_job "rodney"
