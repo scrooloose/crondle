@@ -5,7 +5,9 @@ module Crondle
     end
 
     def job(cmd, options = {})
-      jobs << Job.new(next_desc, cmd, options)
+      j = Job.new(next_desc, cmd, options)
+      jobs << j
+      j
     end
 
     def daily_job(cmd, hour = 0, minute = 0)
