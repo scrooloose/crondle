@@ -3,26 +3,26 @@ module Crondle
     class InvalidTimingParamError < StandardError; end
 
     attr_reader :minute,
-      :hour,
-      :day_of_month,
-      :month,
-      :day_of_week
+                :hour,
+                :day_of_month,
+                :month,
+                :day_of_week
 
     attr_accessor :description,
-      :cmd
+                  :cmd
 
     def initialize(description, cmd, timing_options = {})
       self.description = description
-      self.cmd = cmd
+      self.cmd         = cmd
       set_timing_options(timing_options)
     end
 
     def set_timing_options(options)
-      self.minute = options[:minute] if options[:minute]
-      self.hour = options[:hour] if options[:hour]
+      self.minute       = options[:minute] if options[:minute]
+      self.hour         = options[:hour] if options[:hour]
       self.day_of_month = options[:day_of_month] if options[:day_of_month]
-      self.month = options[:month] if options[:month]
-      self.day_of_week = options[:day_of_week].to_sym if options[:day_of_week]
+      self.month        = options[:month] if options[:month]
+      self.day_of_week  = options[:day_of_week].to_sym if options[:day_of_week]
     end
 
     def minute=(minute)
