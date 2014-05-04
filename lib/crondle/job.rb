@@ -47,13 +47,13 @@ module Crondle
 
     def day_of_week=(day_of_week)
       @day_of_week = case day_of_week.to_sym
-                     when :sunday:    0
-                     when :monday:    1
-                     when :tuesday:   2
-                     when :wednesday: 3
-                     when :thursday:  4
-                     when :friday:    5
-                     when :saturday:  6
+                     when :sunday;    0
+                     when :monday;    1
+                     when :tuesday;   2
+                     when :wednesday; 3
+                     when :thursday;  4
+                     when :friday;    5
+                     when :saturday;  6
                      else
                        raise(InvalidTimingParamError, "Day of week must be one of :monday, :tuesday, etc")
                      end
