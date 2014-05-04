@@ -39,13 +39,13 @@ module Crondle
     end
 
     it "should allow 'day_of_week' to be :monday||:tuesday||:wednesday||etc" do
-      lambda {Job.new("desc", "ls", :day_of_week => :monday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :tuesday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :wednesday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :thursday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :friday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :saturday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => :sunday)}.should_not raise_error(Job::InvalidTimingParamError)
+      lambda {Job.new("desc", "ls", :day_of_week => :monday)}.should_not    raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :tuesday)}.should_not   raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :wednesday)}.should_not raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :thursday)}.should_not  raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :friday)}.should_not    raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :saturday)}.should_not  raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => :sunday)}.should_not    raise_error
     end
 
     it "should default all timing options to '*' if they arent specified" do
@@ -57,8 +57,8 @@ module Crondle
     end
 
     it "should work if day_of_week is a symbol OR a string" do
-      lambda {Job.new("desc", "ls", :day_of_week => :monday)}.should_not raise_error(Job::InvalidTimingParamError)
-      lambda {Job.new("desc", "ls", :day_of_week => 'monday')}.should_not raise_error(Job::InvalidTimingParamError)
+      lambda {Job.new("desc", "ls", :day_of_week => :monday)}.should_not  raise_error
+      lambda {Job.new("desc", "ls", :day_of_week => 'monday')}.should_not raise_error
     end
 
     it "should output the description as a comment on the first line and the crontab command on the following line" do
