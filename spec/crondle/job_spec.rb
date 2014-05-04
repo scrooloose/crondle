@@ -2,39 +2,39 @@ require File.dirname(__FILE__) + '/../spec_helper.rb'
 
 module Crondle
   describe Job do
-    it "shouldnt allow 'minute' to be < 0" do
+    it "should not allow 'minute' to be < 0" do
       lambda {Job.new("desc", "ls", :minute => -1)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'minute' to be > 60" do
+    it "should not allow 'minute' to be > 60" do
       lambda {Job.new("desc", "ls", :minute => 61)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'hour' to be > 23" do
+    it "should not allow 'hour' to be > 23" do
       lambda {Job.new("desc", "ls", :hour => 24)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'hour' to be < 0" do
+    it "should not allow 'hour' to be < 0" do
       lambda {Job.new("desc", "ls", :hour => -1)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'day_of_month' to be > 31" do
+    it "should not allow 'day_of_month' to be > 31" do
       lambda {Job.new("desc", "ls", :day_of_month => 32)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'day_of_month' to be < 0" do
+    it "should not allow 'day_of_month' to be < 0" do
       lambda {Job.new("desc", "ls", :day_of_month => -1)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'month' to be < 0" do
+    it "should not allow 'month' to be < 0" do
       lambda {Job.new("desc", "ls", :month => -1)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'month' to be > 12" do
+    it "should not allow 'month' to be > 12" do
       lambda {Job.new("desc", "ls", :month => 13)}.should raise_error(Job::InvalidTimingParamError)
     end
 
-    it "shouldnt allow 'day_of_week' to be other than :monday||:tuesday||:wednesday||etc" do
+    it "should not allow 'day_of_week' to be something other than :monday||:tuesday||:wednesday||etc" do
       lambda {Job.new("desc", "ls", :day_of_week => :foobarday)}.should raise_error(Job::InvalidTimingParamError)
     end
 
